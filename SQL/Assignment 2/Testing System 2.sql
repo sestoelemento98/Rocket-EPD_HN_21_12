@@ -73,15 +73,22 @@ right join Position as P on A.PositionID = P.PositionID
 group by Chuc_vu
 order by So_luong ;
 
-#Question 17 (chua thong ke duoc moi phong ban co nhung vi tri gi)
+#Question 17 (da chua)
 
-select Account.AccountID,Account.FullName, Department.DepartmentName, Position.PositionName, Account.PositionID
-from Account
-inner join Department on Account.DepartmentID = Department.DepartmentID
-inner join Position on Account.PositionID = Position.PositionID
-group by Account.AccountID 
-order by count(Account.PositionID);
-
+SELECT
+	b.DepartmentName,
+	c.PositionName,
+	count(*) AS total 
+FROM 
+	Account a 
+	LEFT JOIN Department b ON a.DepartmentID = b.DepartmentID
+	LEFT JOIN Position c ON a.PositionID = c.PositionID
+GROUP BY
+	b.DepartmentName,
+	c.PositionName
+ORDER BY 
+b.DepartmentName,
+	c.PositionName
 #Question 18 (da hien thi duoc het thong tin tru phan answer cua cau hoi)
 
 select Q.QuestionID, Q.Content, C.CategoryName, T.TypeName, Ans.AnswerID ,A.FullName, Q.CreateDate
