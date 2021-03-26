@@ -22,7 +22,7 @@ select * from Thamgianhieugroupnhat;
 
 #Q3
 create view Nhungcauhoicocontentquadai as
-	select * from Question where Content > substring(Content, 1, 300);
+	select * from Question where character_length(Content) > 300;
 
 #Q4
 drop view if exists Phongbanconhieunhanviennhat;
