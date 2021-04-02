@@ -7,7 +7,7 @@ drop procedure if exists get_department_account;
 DELIMITER $$
 	CREATE PROCEDURE get_department_account (IN department_name nvarchar(30), OUT department_account nvarchar(500))
 		BEGIN
-			select (a.AccountID, a.Email, a.Username, a.FullName, a.CreateDate) into department_account 
+			select a.AccountID into department_account  
             from `Account` a 
             inner join `Department` d on a.DepartmentID = d.DepartmentID
             where d.DepartmentName  = department_name;
